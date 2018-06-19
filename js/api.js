@@ -1,6 +1,6 @@
 function sendRequest(codeMirror){
 
-    url = "http://127.0.0.1:9487/api";
+    url = "http://140.116.245.100:9487/api";
 
     request = {
         "language": $("#compile-language").val(),
