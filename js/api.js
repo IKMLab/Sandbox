@@ -34,12 +34,21 @@ function sendRequest(codeMirror){
             console.log(result);
             output = result['output'];
             result = result['status'];
-            $("#code-memory").html("memory usage: " + String(result['memory']));
-            $("#code-out").html("output: " + String(output));
-            $("#code-result").html("result: " + String(result['result']));
-            $("#code-vcpu").html("cpu time: " + String(result['cpu_time']));
-            $("#code-realtime").html("real run time: " + String(result['real_time']));
-            $("#code-error").html("error: " + String(result['error']));
+            if(status != 'error'){
+                $("#code-memory").html("memory usage: " + String(result['memory']));
+                $("#code-out").html("output: " + String(output));
+                $("#code-result").html("result: " + String(result['result']));
+                $("#code-vcpu").html("cpu time: " + String(result['cpu_time']));
+                $("#code-realtime").html("real run time: " + String(result['real_time']));
+                $("#code-error").html("error: " + String(result['error']));
+            }else{
+                $("#code-memory").html("memory usage: err");
+                $("#code-out").html("output: err");
+                $("#code-result").html("result: compile-error");
+                $("#code-vcpu").html("cpu time: err" );
+                $("#code-realtime").html("real run time: err");
+                $("#code-error").html("error: err");
+            }
 
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
